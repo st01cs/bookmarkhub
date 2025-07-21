@@ -1,4 +1,5 @@
-## Browser Extension Starter Template
+## BookMarkHub
+A browser extension for managing bookmarks with GitHub integration.
 This project is a boilerplate for building new chrome extensions. It is initialized with:
 
 * [WXT](https://wxt.dev/) (browser extension framework)

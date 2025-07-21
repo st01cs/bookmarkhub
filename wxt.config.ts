@@ -15,6 +15,11 @@ export default defineConfig({
 		},
 	}),
 	manifest: {
-		permissions: ["storage"],
+		name: "BookMarkHub",
+		permissions: ["storage", "tabs"],
+		options_ui: {
+			page: "entrypoints/options/index.html",
+			open_in_tab: true
+		},
 	},
 });
