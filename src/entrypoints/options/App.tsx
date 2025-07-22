@@ -90,7 +90,7 @@ function OptionsApp() {
         <div>
           <div className="flex justify-between items-center mb-1">
             <Label htmlFor="owner">Owner</Label>
-            <a href="#" className="text-xs text-blue-600 hover:underline">Join GitHub</a>
+            <a href="https://github.com/join?source=login" className="text-xs text-blue-600 hover:underline">Join GitHub</a>
           </div>
           <Input
             id="owner"
@@ -103,7 +103,7 @@ function OptionsApp() {
         <div>
           <div className="flex justify-between items-center mb-1">
             <Label htmlFor="repo">Repo</Label>
-            <a href="#" className="text-xs text-blue-600 hover:underline">Create repo</a>
+            <a href="https://github.com/login?return_to=%2Fst01cs%2Fbookmarkhub-template%2Fgenerate" className="text-xs text-blue-600 hover:underline">Create repo</a>
           </div>
           <Input
             id="repo"
@@ -116,7 +116,7 @@ function OptionsApp() {
         <div>
           <div className="flex justify-between items-center mb-1">
             <Label htmlFor="token">Personal access token<span className="text-red-500">*</span></Label>
-            <a href="#" className="text-xs text-blue-600 hover:underline">Create token</a>
+            <a href="https://github.com/settings/tokens/new" className="text-xs text-blue-600 hover:underline">Create token</a>
           </div>
           <Input
             id="token"
