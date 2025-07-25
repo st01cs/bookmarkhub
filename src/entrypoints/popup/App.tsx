@@ -74,10 +74,20 @@ function App() {
 				owner,
 				repo,
 				title: formData.title,
-				body: `[${formData.title}](${formData.link})\n\n---\n\n${formData.description}`,
-				// 删除 labels: tags,
+				body: formData.link,
 			});
 			console.log("Issue created:", response.data.html_url);
+
+			// 新增：如果有 description，则创建评论
+			if (formData.description && formData.description.trim() !== "") {
+				await octokit.rest.issues.createComment({
+					owner,
+					repo,
+					issue_number: response.data.number,
+					body: formData.description,
+				});
+			}
+
 			setSaveState('saved');
 			setShowSaved(true);
 		} catch (error) {
