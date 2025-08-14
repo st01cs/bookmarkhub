@@ -1,86 +1,153 @@
 # BookMarkHub
 
-A browser bookmark manager optimized for capture and retrieval speed.
+<div align="center">
+  <img src="./icon.svg" width="128" height="128" alt="BookmarkHub Icon">
+  <br>
+  <strong>A browser bookmark manager optimized for capture and retrieval speed</strong>
+</div>
 
-- Extract page title and url into a structured bookmark entry.
-- One-click to save bookmarks as GitHub issues in your repository.
-- Add new tags or reuse the ones from previous bookmarks.
-- Instant search and organization using GitHub's powerful issue search and filtering.
+## ✨ Features
 
-## Screenshot
+- **🚀 One-click save** - Extract page title and URL into structured bookmark entries
+- **🐙 GitHub integration** - Save bookmarks as GitHub issues in your repository  
+- **🔍 Powerful search** - Use GitHub's advanced search and filtering capabilities
+- **📝 Rich descriptions** - Add notes and context to your bookmarks
+- **🏷️ Smart organization** - Leverage GitHub labels for categorization
+- **⚡ Fast retrieval** - Find bookmarks instantly with GitHub's search
 
-![BookmarkHub Extension Interface](./src/assets/bookmarkhub.svg)
+## 📸 Screenshots
 
-## Get started
+<div align="center">
+  <img src="./src/assets/bookmarkhub.svg" alt="BookmarkHub Extension Interface" width="400">
+  <br>
+  <em>Clean, intuitive interface for quick bookmark management</em>
+</div>
 
-### Install
+## 🚀 Get Started
 
-- Chrome and Edge: Load the extension from `./output/chrome-mv3-prod` after building
-- Firefox: Load the extension from `./output/firefox-mv2-prod` after building
+### 📦 Installation
 
-### Connect to GitHub
+#### Option 1: Build from Source
+1. Clone this repository
+2. Install dependencies: `pnpm install`
+3. Build the extension: `pnpm build` (Chrome) or `pnpm build:firefox` (Firefox)
+4. Load the extension in your browser:
+   - **Chrome/Edge**: Load from `./output/chrome-mv3-prod`
+   - **Firefox**: Load from `./output/firefox-mv2-prod`
 
-- When you activate the extension from browser toolbar for the 1st time, click the button to connect to GitHub.
-- Provide your GitHub username and repository name where you want to store bookmarks.
-  - If you don't have a repo yet, create a new repository on GitHub for storing your bookmarks.
-  - You can set the visibility of your repo to either Public or Private. The extension works in both cases.
-- Create a new [fine-grained access token](https://github.com/settings/personal-access-tokens/new) for the extension to create issues on your behalf. Make sure you select the correct repo and grant `Issues` permission with `Read and write` access.
-- Click Connect and make sure you get a success message.
-- Now navigate to any page and re-open the extension. You will be able to save new bookmarks as GitHub issues.
+#### Option 2: Development Mode
+- Chrome: `pnpm dev` then load `./output/chrome-mv3-dev`
+- Firefox: `pnpm dev:firefox` then load `./output/firefox-mv2-dev`
 
-## FAQ
+### ⚙️ Setup GitHub Connection
 
-### How to open the extension with keyboard shortcut?
+1. **First Launch**: Click the extension icon in your browser toolbar
+2. **GitHub Setup**: In the options page, provide:
+   - Your GitHub username
+   - Repository name for storing bookmarks (create one if needed)
+   - [Personal access token](https://github.com/settings/personal-access-tokens/new) with `Issues` permission
+3. **Connect**: Click "Connect" and verify the success message
+4. **Start Bookmarking**: Navigate to any page and click the extension icon to save
 
-> By default, you can assign a keyboard shortcut to open the extension. You can customize it with browser extensions settings.
->
-> - Chrome and Edge: visit `chrome://extensions/shortcuts`
-> - Firefox: visit `about:addons` and configure shortcuts in the extension settings.
+> 💡 **Tip**: Your repository can be public or private - the extension works with both!
 
-### How are bookmarks organized?
+## ❓ FAQ
 
-> Bookmarks are stored as GitHub issues in your repository. Each bookmark becomes an issue with:
-> - Title: The page title
-> - Body: The URL and any additional notes
-> - Labels: Tags for categorization
-> - This allows you to use GitHub's powerful search, filtering, and organization features.
+<details>
+<summary><strong>How to set up keyboard shortcuts?</strong></summary>
 
-## Development
+You can assign a custom keyboard shortcut to quickly open the extension:
+- **Chrome/Edge**: Go to `chrome://extensions/shortcuts`
+- **Firefox**: Visit `about:addons` → Extension settings → Shortcuts
 
-This project is built with:
+</details>
 
-* [WXT](https://wxt.dev/) (browser extension framework)
-* [React](https://react.dev/)
-* [TailwindCSS](https://tailwindcss.com/)
-* [shadcn](https://ui.shadcn.com/) (component design system)
-* [Octokit](https://github.com/octokit/octokit.js) (GitHub API integration)
+<details>
+<summary><strong>How are bookmarks organized?</strong></summary>
 
-### Getting Started
+Each bookmark becomes a GitHub issue with:
+- **Title**: The webpage title
+- **Body**: The URL
+- **Comments**: Your additional notes and descriptions  
+- **Labels**: Tags for categorization (future feature)
 
-First, run the development server:
+This gives you access to GitHub's powerful search, filtering, and organization tools!
+
+</details>
+
+<details>
+<summary><strong>Can I use a private repository?</strong></summary>
+
+Yes! BookmarkHub works with both public and private repositories. Your bookmarks will only be visible to you and anyone with repository access.
+
+</details>
+
+<details>
+<summary><strong>What permissions does the token need?</strong></summary>
+
+Your GitHub personal access token needs:
+- **Issues**: Read and write access to create and manage bookmark issues
+- **Repository access**: Select the specific repository for your bookmarks
+
+</details>
+
+## 🛠️ Development
+
+### Tech Stack
+
+- **[WXT](https://wxt.dev/)** - Modern browser extension framework
+- **[React 19](https://react.dev/)** - UI framework with TypeScript
+- **[TailwindCSS](https://tailwindcss.com/)** - Utility-first CSS framework  
+- **[shadcn/ui](https://ui.shadcn.com/)** - Beautiful, accessible components
+- **[Octokit](https://github.com/octokit/octokit.js)** - GitHub API integration
+
+### Development Commands
 
 ```bash
-pnpm i
-pnpm dev
+# Install dependencies
+pnpm install
+
+# Development
+pnpm dev              # Chrome development build
+pnpm dev:firefox      # Firefox development build
+
+# Production builds
+pnpm build            # Chrome production build
+pnpm build:firefox    # Firefox production build
+
+# Packaging
+pnpm zip              # Package Chrome extension
+pnpm zip:firefox      # Package Firefox extension
+
+# Type checking
+pnpm compile          # TypeScript compilation check
 ```
 
-Open your browser and load the appropriate development build. For example, if you are developing for the chrome browser, using manifest v3, use: `./output/chrome-mv3-dev`.
-
-For further guidance, [visit our Documentation](https://docs.wxt.dev/)
-
-### Adding new components
-
-New components can be added via the shadcn cli like so:
-```
-pnpm dlx shadcn@latest add tooltip 
-```
-
-### Making production build
-
-Run the following:
+### Adding Components
 
 ```bash
-pnpm build
-# Build for specific browsers
-pnpm build:firefox
+# Add new shadcn/ui components
+pnpm dlx shadcn@latest add tooltip
+pnpm dlx shadcn@latest add dialog
 ```
+
+### Project Structure
+
+```
+src/
+├── components/ui/     # Reusable UI components
+├── entrypoints/       # Extension entry points
+│   ├── background.ts  # Background script
+│   ├── popup/         # Extension popup
+│   └── options/       # Settings page
+└── lib/              # Utilities and helpers
+```
+
+---
+
+<div align="center">
+  <strong>Built with ❤️ for better bookmark management</strong>
+  <br><br>
+  <a href="https://github.com/st01cs/bookmarkhub/issues">🐛 Report Bug</a> • 
+  <a href="https://github.com/st01cs/bookmarkhub/issues">✨ Request Feature</a>
+</div>
